@@ -13,7 +13,13 @@ trademarked.
 * Supports changes of properties with a single line of code
 
 ## Maven
-TODO
+```xml
+<dependency>
+  <groupId>com.github.oughttoprevail</groupId>
+  <artifactId>PrevailProtocol</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
 ## Purpose
 The purpose of the PrevailProtocol was mostly so I could learn cryptography better and I thought Signal Protocol looked
