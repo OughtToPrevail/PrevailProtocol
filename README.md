@@ -23,9 +23,6 @@ into a project.
 
 Note: Now that I understand it I most likely will not be uploading any updates to this project.
 
-## Tutorial
-Tutorial can be found on the github wiki.
-
 # Examples
 Examples can found in the test directory.
 
