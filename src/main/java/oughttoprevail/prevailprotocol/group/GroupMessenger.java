@@ -118,11 +118,7 @@ class GroupMessenger
 		{
 			SymmetricKeyRatchet receivingRatchet = senderSignatureNRatchet.getReceivingRatchet();
 			skipKeys(signatureKey, receivedCounter, receivingRatchet);
-			System.out.println("MESSAGE KEYS FROM RATCHET " + receivedCounter);
 			messageKeys = receivingRatchet.step(false);
-		} else
-		{
-			System.out.println("MESSAGE KEYS FROM SKIPPED KEYS");
 		}
 		return cipher.decrypt(messageKeys.getMessageKey(), messageKeys.getIV(), ciphertext);
 	}
@@ -140,12 +136,10 @@ class GroupMessenger
 		int myCounter = receivingRatchet.getCounter();
 		if(SkippedKeysStorage.ensureCanSkip(skippedKeysStorage, myCounter, receivedCounter, settings))
 		{
-			System.out.println("ENSURE CAN SKIP NO");
 			return;
 		}
 		while(myCounter < receivedCounter)
 		{
-			System.out.println("SKIP " + myCounter);
 			skippedKeysStorage.addSkippedKey(publicSignatureKey, null, myCounter, receivingRatchet.step());
 			myCounter++;
 		}

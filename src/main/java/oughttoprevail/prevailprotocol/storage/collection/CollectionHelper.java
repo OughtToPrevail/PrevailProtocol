@@ -61,7 +61,6 @@ class CollectionHelper<E>
 		this.size = new CounterField(sizeField);
 		//load all fields
 		int size = this.size.get();
-		System.out.println("SIZE " + size);
 		for(int i = 0; i < size; i++)
 		{
 			Field<E> field = createField();

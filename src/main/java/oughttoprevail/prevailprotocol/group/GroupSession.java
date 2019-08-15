@@ -138,7 +138,6 @@ class GroupSession
 			Directory memberDirectory = directory.directory(userId.toString());
 			for(UID deviceId : member.getDeviceIds())
 			{
-				System.out.println("DEVICE ID " + deviceId.toString());
 				Storage deviceStorage = memberDirectory.storage(deviceId.toString());
 				receivingRatchets.put(new UserDeviceUID(userId, deviceId),
 						new SignatureNRatchet(new SymmetricKeyRatchet(kdf, simpleKDF, deviceStorage, settings), null, deviceStorage));
