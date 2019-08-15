@@ -269,7 +269,7 @@ public class Settings
 	/**
 	 * Constructs a new {@link Settings} with all the variables being empty.
 	 * <b>NOTE: using this is not recommended and will most likely result in lots of exceptions unless all variables are set before this
-	 * {@link Settings is used</b>
+	 * {@link Settings is used}</b>
 	 */
 	public Settings()
 	{

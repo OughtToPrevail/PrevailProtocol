@@ -38,6 +38,10 @@ Also thanks to [5_c_d](https://community.signalusers.org/u/5_c_d/) which helped 
 ## License
 This program is released under GPLv3
 
+## Documentation
+Most classes are more or less documented, often if you see a method is a getter/setter or a constructor takes a
+parameter and it's not documented it probably means the field is documented.
+
 ## How to use PrevailProtocol (User in depth)
 A user manages all features of the library in one class.
 

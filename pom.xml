@@ -6,7 +6,12 @@
 	
 	<groupId>com.github.oughttoprevail</groupId>
 	<artifactId>PrevailProtocol</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	
+	<name>PrevailProtocol</name>
+	<description>A modified version of https://signal.org/docs/</description>
+	<url>https://github.com/OughtToPrevail/PrevailProtocol</url>
 	
 	<dependencies>
 		<dependency>
@@ -34,6 +39,44 @@
 		</dependency>
 	</dependencies>
 	
+	<licenses>
+		<license>
+			<name>The GNU General Public License v3.0</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+		</license>
+	</licenses>
+	
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+	
+	<developers>
+		<developer>
+			<name>OughtToPrevail</name>
+			<email>oughttoprevail@gmail.com</email>
+			<organization>com.github.OughtToPrevail</organization>
+			<organizationUrl>https://github.com/OughtToPrevail</organizationUrl>
+		</developer>
+	</developers>
+	
+	<scm>
+		<connection>scm:git:git://github.com/OughtToPrevail/PrevailProtocol.git</connection>
+		<developerConnection>scm:git:ssh://github.com/OughtToPrevail/PrevailProtocol.git</developerConnection>
+		<url>https://github.com/OughtToPrevail/PrevailProtocol</url>
+	</scm>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<additionalparam>-Xdoclint:none</additionalparam>
+	</properties>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -46,7 +89,67 @@
 					<compilerArgument>-Xlint</compilerArgument>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
+	
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>2.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-sources</id>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.9.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.5</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
